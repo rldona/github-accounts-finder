@@ -1,8 +1,10 @@
 # Github accounts finder
 
-Github accounts finder made with angularjs. I use public Github API.
+Github accounts seeker is a small app developed with AngularJS.
 
-https://api.github.com/
+I use public Github API: https://api.github.com/
+
+NOTE: App development in progress...
 
 I ❤ APIs
 
