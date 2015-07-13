@@ -1,0 +1,23 @@
+{
+  "name": "github-accounts-finder",
+  "version": "1.0.0",
+  "description": "NOTE: App development in progress...",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rldona/github-accounts-finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rldona/github-accounts-finder/issues"
+  },
+  "homepage": "https://github.com/rldona/github-accounts-finder#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2"
+  }
+}
