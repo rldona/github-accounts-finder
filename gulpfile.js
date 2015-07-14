@@ -1,5 +1,7 @@
 var gulp = require('gulp'),
-    jshint = require('gulp-jshint');
+    jshint = require('gulp-jshint'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify');
 
 // gulp.task('lint', function () {
 //   return gulp.src('app/sources/js/*.js')
@@ -21,12 +23,17 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('fail'));
 });
 
-// identifies a dependent task must be complete before this one begins
 gulp.task('init', [ 'lint' ], function () {
 
-  // copy files
+  // concat js files
   gulp.src('app/sources/js/*.js')
+    .pipe(concat('all.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('app/build/js/'));
+
+  // copy files to directory
+  // gulp.src('app/sources/js/*.js')
+  //   .pipe(gulp.dest('app/build/js/'));
 
 });
 
