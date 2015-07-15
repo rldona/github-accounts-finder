@@ -27,5 +27,5 @@
       "init": "npm install",
       "install": "bower install",
       "start": "node src/server/app.js"
-  },
+  }
 }
