@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    config = require('./gulp.config');
+    config = require('./gulp.config')();
 
 gulp.task('default', function() {
     console.log('Hello Gulp !!');
