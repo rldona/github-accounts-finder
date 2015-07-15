@@ -27,7 +27,7 @@ app.use(cors());
 // routes = require('./routes/index')(app); // TODO: add routes
 
 console.log('=================================');
-console.log('SERVER START');
+console.log('Server start...');
 console.log('=================================');
 console.log('Port = ' + port);
 console.log('Env = ' + environment);
@@ -40,7 +40,7 @@ app.get('/ping', function(req, res, next) {
 
 switch (environment) {
     case 'build':
-        console.log('** BUILD **');
+        console.log('Build');
         app.use(express.static('./build/'));
         app.use('/*', express.static('./build/index.html'));
         break;
@@ -56,4 +56,5 @@ switch (environment) {
 
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);
+    console.log('=================================');
 });
