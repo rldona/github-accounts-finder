@@ -1,12 +1,14 @@
 module.exports = function() {
     var client = './src/client/',
         clientApp = client + 'app/',
+        build = './build/',
         scss = 'styles/scss/',
         css = 'styles/css/';
 
     var config = {
         client: client,
         index: client + 'index.html',
+        build: build,
         scss: [
             client + scss + '**/*.scss'
         ],

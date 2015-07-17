@@ -46,6 +46,25 @@ gulp.task('inject', function() {
 });
 
 // -----------------------------------------------
+//  Optimize
+// -----------------------------------------------
+
+gulp.task('optimize', ['inject'], function() {
+    console.log('Otimizing the JS, CSS & HTML');
+    var assets = $.useref.assets({searchPath: './'});
+
+    return gulp
+        .src(config.index)
+        .pipe($.plumber())
+        .pipe(assets)
+        // .pipe($.gulpif('*.js', $.uglify()))
+        // .pipe($.gulpif('*.css', $.minifyCss()))
+        .pipe(assets.restore())
+        .pipe($.useref())
+        .pipe(gulp.dest(config.build));
+});
+
+// -----------------------------------------------
 //  Gulp Start
 // -----------------------------------------------
 
