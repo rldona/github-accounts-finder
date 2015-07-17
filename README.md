@@ -4,12 +4,12 @@ NOTE: App development in progress...
 
 Github accounts seeker is a small app developed with AngularJS.
 
-npm install
-bower install
-nodemon
+1. npm install
+2. bower install
+3. nodemon
 
-I use public Github API: https://api.github.com/
+> I use public Github API: https://api.github.com/
 
-I ❤ APIs
+** I ❤ APIs **
 
 Enjoy !!
