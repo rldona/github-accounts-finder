@@ -49,9 +49,7 @@ gulp.task('inject', function() {
 //  Gulp Start
 // -----------------------------------------------
 
-gulp.task('default', function() {
-    console.log('Hello Gulp !!');
-});
+gulp.task('default', ['sass', 'watch']);
 
 // -----------------------------------------------
 //  Add a task to render the output
