@@ -5,10 +5,34 @@ var gulp = require('gulp'),
     taskListing = require('gulp-task-listing'),
     $ = require('gulp-load-plugins')({lazy: true});
 
-// add a task to render the output
-gulp.task('help', taskListing);
+// -----------------------------------------------
+//  Styles: SASS, fonts, images, etc...
+// -----------------------------------------------
 
-// dependency injection
+gulp.task('sass', function() {
+    // log('Compile & compressed sass');
+    return gulp
+        .src('src/client/styles/scss/app.scss')
+        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.sass({outputStyle: 'compressed'}))
+        .pipe($.if(args.verbose, $.print(function(filepath) {
+            return 'built file: ' + filepath;
+        })))
+        .pipe(gulp.dest('src/client/styles/css/'));
+});
+
+// -----------------------------------------------
+//  SCSS Watcher
+// -----------------------------------------------
+
+gulp.task('watch', function() {
+    gulp.watch([config.scss, config.js], ['sass']);
+});
+
+// -----------------------------------------------
+//  Dependency injection
+// -----------------------------------------------
+
 gulp.task('inject', function() {
     var wiredep = require('wiredep').stream,
         options = config.getWiredepDefaultOptions();
@@ -28,3 +52,9 @@ gulp.task('inject', function() {
 gulp.task('default', function() {
     console.log('Hello Gulp !!');
 });
+
+// -----------------------------------------------
+//  Add a task to render the output
+// -----------------------------------------------
+
+gulp.task('help', taskListing);

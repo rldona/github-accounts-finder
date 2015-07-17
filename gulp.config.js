@@ -1,21 +1,22 @@
 module.exports = function() {
     var client = './src/client/',
-        clientApp = client + 'app/';
+        clientApp = client + 'app/',
+        scss = 'styles/scss/',
+        css = 'styles/css/';
 
     var config = {
         client: client,
-
         index: client + 'index.html',
-
-        css: [
-            client + 'styles/css/*.css'
+        scss: [
+            client + scss + '**/*.scss'
         ],
-
+        css: [
+            client + css + '**/*.css'
+        ],
         js: [
             clientApp + '**/*.js',
             // '!' + clientApp + 'core'
         ],
-
         bower: {
             json: require('./bower.json'),
             directory: './bower_components/',
