@@ -9,8 +9,6 @@
 
   function userdata($http) {
 
-    // curl -H "Authorization: token 627652760-eLI1brmMaRcvw5Sef5gxgzueJdaHkPW5xZyOCOiu" https://api.github.com/rldona/
-
     return {
       userDataGithub : userDataGithub
     };

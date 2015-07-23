@@ -27,13 +27,49 @@
 </head>
 <body>
 
+  <!-- TODO: crear una directiva -->
   <div id="search" ng-controller="SearchCtrl as vm">
     <h2>{{vm.title}}</h2>
     <input type="text" ng-model="vm.userName"/>
-    <button type="button" ng-click="vm.findUser(vm.userName)">Find User</button>
+    <button type="button" ng-click="vm.findUser(vm.userName)">Search {{vm.userName}}</button>
     <div ng-if="vm.user">
-      {{vm.user}}
+
+      <ul>
+        <li> <img ng-src="{{vm.user.data.avatar_url}}" alt="{{vm.user.data.name}}" /> </li>
+        <li>Name: {{vm.user.data.name}}</li>
+        <li>Github account: <a ng-href="{{vm.user.data.html_url}}">{{vm.user.data.login}}</a>  </li>
+        <li>Company: {{vm.user.data.company}}</li>
+        <li>Blog: <a ng-href="{{vm.user.data.blog}}">{{vm.user.data.blog}}</a></li>
+        <li>Location: {{vm.user.data.location}}</li>
+        <li>Email: <a ng-href="mailto:{{vm.user.data.email}}" target="_top">{{vm.user.data.email}}</a></li>
+        <li>Bio": {{vm.user.data.bio}}</li>
+
+        <!-- TODO: link to new view: Repositories. show all repositories -->
+        <!-- TODO: show all contributors in view Repositories https://api.github.com/repos/rldona/ajax-class/contributors-->
+
+        <li>Public Repos: <a ng-href="" ng-click="vm.findRepositories(vm.userName)">{{vm.user.data.public_repos}}</a> </li>
+        <li>Public Gists: {{vm.user.data.public_gists}}</li>
+
+        <!-- TODO: link to new view: Followers. show all followers -->
+
+        <li>Followers: {{vm.user.data.followers}}</li>
+        <li>Following: {{vm.user.data.following}}</li>
+      </ul>
+
     </div>
+
+    <div ng-if="vm.repos">
+
+      <!-- TODO: ng-repeat repos -->
+      <ul>
+        <li ng-repeat="item in vm.repos.data" style="padding: 1em;">
+          <h2>{{item.name}}</h2>
+          <p>{{item.description}}</p>
+        </li>
+      </ul>
+
+    </div>
+
   </div>
 
   <!-- build:js js/app.js -->
@@ -49,6 +85,7 @@
   <!-- inject:js -->
   <script src="/src/client/app/app.module.js"></script>
   <script src="/src/client/app/core/config.js"></script>
+  <script src="/src/client/app/services/reposdata.factory.js"></script>
   <script src="/src/client/app/services/userdata.factory.js"></script>
   <script src="/src/client/app/components/search/search.controller.js"></script>
   <!-- endinject -->
