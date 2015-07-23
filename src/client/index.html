@@ -2,40 +2,49 @@
 <html lang="en" ng-app="app">
 <head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-    <title ng-bind="title"></title>
-    <base href="/">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title ng-bind="title"></title>
+  <base href="/">
 
-    <style>
-       .ng-hide { display: none!important; }
-    </style>
+  <style>
+     .ng-hide { display: none!important; }
+  </style>
 
-    <!-- build:css styles/app.css -->
+  <!-- build:css styles/app.css -->
 
-    <!-- bower:css -->
-    <!-- endbower -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
 
-    <!-- inject:css -->
-    <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/src/client/styles/css/app.css">
+  <!-- endinject -->
 
-    <!-- endbuild -->
+  <!-- endbuild -->
 
 </head>
 <body>
 
-    <h1>Github accounts finder</h1>
+  <h1>Github accounts finder</h1>
 
-    <!-- build:js js/app.js -->
+  <!-- build:js js/app.js -->
 
-    <!-- bower:js -->
-    <!-- endbower -->
+  <!-- bower:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <!-- endbower -->
 
-    <!-- inject:js -->
-    <!-- endinject -->
+  <!-- inject:js -->s
+  <script src="/src/client/app/app.module.js"></script>
+  <script src="/src/client/app/core/config.js"></script>
+  <!-- endinject -->
 
-    <!-- endbuild -->
+  <!-- endbuild -->
 
 </body>
 </html>

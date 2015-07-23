@@ -26,12 +26,12 @@ app.use(cors());
 
 // routes = require('./routes/index')(app); // TODO: add routes
 
-console.log('=================================');
+console.log('---------------------------------------');
 console.log('Server start...');
-console.log('=================================');
+console.log('---------------------------------------');
 console.log('Port = ' + port);
 console.log('Env = ' + environment);
-console.log('=================================');
+console.log('---------------------------------------');
 
 app.get('/ping', function(req, res, next) {
     console.log(req.body);
@@ -46,7 +46,7 @@ switch (environment) {
         break;
     default:
         console.log('Development');
-        console.log('=================================');
+        console.log('---------------------------------------');
         app.use(express.static('./src/client/'));
         app.use(express.static('./'));
         app.use(express.static('./tmp'));
@@ -56,5 +56,5 @@ switch (environment) {
 
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);
-    console.log('=================================');
+    console.log('---------------------------------------');
 });

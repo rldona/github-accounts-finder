@@ -10,23 +10,16 @@ var gulp = require('gulp'),
 // -----------------------------------------------
 
 gulp.task('sass', function() {
-    // log('Compile & compressed sass');
-    return gulp
-        .src('src/client/styles/scss/app.scss')
-        .pipe($.sass().on('error', $.sass.logError))
-        .pipe($.sass({outputStyle: 'compressed'}))
-        .pipe($.if(args.verbose, $.print(function(filepath) {
-            return 'built file: ' + filepath;
-        })))
-        .pipe(gulp.dest('src/client/styles/css/'));
-});
+  // log('Compile & compressed sass');
 
-// -----------------------------------------------
-//  SCSS Watcher
-// -----------------------------------------------
-
-gulp.task('watch', function() {
-    gulp.watch([config.scss, config.js], ['sass']);
+  return gulp
+    .src('src/client/styles/scss/app.scss')
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe($.sass({outputStyle: 'compressed'}))
+    .pipe($.if(args.verbose, $.print(function(filepath) {
+      return 'built file: ' + filepath;
+    })))
+    .pipe(gulp.dest('src/client/styles/css/'));
 });
 
 // -----------------------------------------------
@@ -34,41 +27,49 @@ gulp.task('watch', function() {
 // -----------------------------------------------
 
 gulp.task('inject', function() {
-    var wiredep = require('wiredep').stream,
-        options = config.getWiredepDefaultOptions();
+  var wiredep = require('wiredep').stream,
+    options = config.getWiredepDefaultOptions();
 
-    return gulp
-        .src(config.index)
-        .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(config.css)))
-        .pipe($.inject(gulp.src(config.js)))
-        .pipe(gulp.dest(config.client));
+  return gulp
+    .src(config.index)
+    .pipe(wiredep(options))
+    .pipe($.inject(gulp.src(config.css)))
+    .pipe($.inject(gulp.src(config.js)))
+    .pipe(gulp.dest(config.client));
 });
 
 // -----------------------------------------------
 //  Optimize
 // -----------------------------------------------
 
-gulp.task('optimize', ['inject'], function() {
-    console.log('Otimizing the JS, CSS & HTML');
-    var assets = $.useref.assets({searchPath: './'});
+gulp.task('build', ['inject'], function() {
+  console.log('Otimizing the JS, CSS & HTML');
+  var assets = $.useref.assets({searchPath: './'});
 
-    return gulp
-        .src(config.index)
-        .pipe($.plumber())
-        .pipe(assets)
-        // .pipe($.gulpif('*.js', $.uglify()))
-        // .pipe($.gulpif('*.css', $.minifyCss()))
-        .pipe(assets.restore())
-        .pipe($.useref())
-        .pipe(gulp.dest(config.build));
+  return gulp
+      .src(config.index)
+      .pipe($.plumber())
+      .pipe(assets)
+      // .pipe($.gulpif('*.js', $.uglify()))
+      // .pipe($.gulpif('*.css', $.minifyCss()))
+      .pipe(assets.restore())
+      .pipe($.useref())
+      .pipe(gulp.dest(config.build));
+});
+
+// -----------------------------------------------
+//  SCSS Watcher
+// -----------------------------------------------
+
+gulp.task('watch', function() {
+  gulp.watch([config.scss, config.js], ['sass']);
 });
 
 // -----------------------------------------------
 //  Gulp Start
 // -----------------------------------------------
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['sass', 'build', 'watch']);
 
 // -----------------------------------------------
 //  Add a task to render the output
