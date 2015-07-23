@@ -27,7 +27,14 @@
 </head>
 <body>
 
-  <h1>Github accounts finder</h1>
+  <div id="search" ng-controller="SearchCtrl as vm">
+    <h2>{{vm.title}}</h2>
+    <input type="text" ng-model="vm.userName"/>
+    <button type="button" ng-click="vm.findUser(vm.userName)">Find User</button>
+    <div ng-if="vm.user">
+      {{vm.user}}
+    </div>
+  </div>
 
   <!-- build:js js/app.js -->
 
@@ -39,9 +46,11 @@
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <!-- endbower -->
 
-  <!-- inject:js -->s
+  <!-- inject:js -->
   <script src="/src/client/app/app.module.js"></script>
   <script src="/src/client/app/core/config.js"></script>
+  <script src="/src/client/app/services/userdata.factory.js"></script>
+  <script src="/src/client/app/components/search/search.controller.js"></script>
   <!-- endinject -->
 
   <!-- endbuild -->
