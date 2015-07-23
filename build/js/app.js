@@ -42968,6 +42968,61 @@ angular.module('ngResource', ['ng']).
 
 /* config app */
 
+// (function() {
+//   'use strict';
+//
+//   angular
+//     .module('app')
+//     .factory('reposdata', reposdata);
+//
+//   reposdata.$inject = ['$http'];
+//
+//   function reposdata($http) {
+//
+//     return {
+//       reposDataGithub : reposDataGithub
+//     };
+//
+//     ////////
+//
+//     function reposDataGithub(githubNick) {
+//       return $http.get('https://api.github.com/users/' + githubNick + '/repos');
+//     }
+//
+//   }
+//
+// }());
+
+(function() {
+  'use strict';
+
+  angular
+    .module('app')
+    .factory('userdata', userdata);
+
+  userdata.$inject = ['$http'];
+
+  function userdata($http) {
+
+    return {
+      userDataGithub : userDataGithub,
+      reposDataGithub : reposDataGithub
+    };
+
+    ////////
+
+    function userDataGithub(githubNick) {
+      return $http.get('https://api.github.com/users/' + githubNick);
+    }
+
+    function reposDataGithub(githubNick) {
+      return $http.get('https://api.github.com/users/' + githubNick + '/repos');
+    }
+
+  }
+
+}());
+
 (function() {
   'use strict';
 
@@ -42975,9 +43030,9 @@ angular.module('ngResource', ['ng']).
     .module('app')
     .controller('SearchCtrl', SearchController);
 
-  SearchController.$inject = ['userdata', 'reposdata'];
+  SearchController.$inject = ['userdata'];
 
-  function SearchController(userdata, reposdata) {
+  function SearchController(userdata) {
     var vm = this;
     vm.user = null;
     vm.repos = null;
@@ -42994,8 +43049,7 @@ angular.module('ngResource', ['ng']).
     };
 
     vm.findRepositories = function(name) {
-      return reposdata.reposDataGithub(name).then(function(data) {
-        console.log(data);
+      return userdata.reposDataGithub(name).then(function(data) {
         vm.repos = data;
         return vm.repos;
       });
