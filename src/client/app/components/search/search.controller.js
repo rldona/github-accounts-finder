@@ -5,9 +5,9 @@
     .module('app')
     .controller('SearchCtrl', SearchController);
 
-  SearchController.$inject = ['userdata', 'reposdata'];
+  SearchController.$inject = ['userdata'];
 
-  function SearchController(userdata, reposdata) {
+  function SearchController(userdata) {
     var vm = this;
     vm.user = null;
     vm.repos = null;
@@ -24,8 +24,7 @@
     };
 
     vm.findRepositories = function(name) {
-      return reposdata.reposDataGithub(name).then(function(data) {
-        console.log(data);
+      return userdata.reposDataGithub(name).then(function(data) {
         vm.repos = data;
         return vm.repos;
       });

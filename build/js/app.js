@@ -42968,61 +42968,6 @@ angular.module('ngResource', ['ng']).
 
 /* config app */
 
-// (function() {
-//   'use strict';
-//
-//   angular
-//     .module('app')
-//     .factory('reposdata', reposdata);
-//
-//   reposdata.$inject = ['$http'];
-//
-//   function reposdata($http) {
-//
-//     return {
-//       reposDataGithub : reposDataGithub
-//     };
-//
-//     ////////
-//
-//     function reposDataGithub(githubNick) {
-//       return $http.get('https://api.github.com/users/' + githubNick + '/repos');
-//     }
-//
-//   }
-//
-// }());
-
-(function() {
-  'use strict';
-
-  angular
-    .module('app')
-    .factory('userdata', userdata);
-
-  userdata.$inject = ['$http'];
-
-  function userdata($http) {
-
-    return {
-      userDataGithub : userDataGithub,
-      reposDataGithub : reposDataGithub
-    };
-
-    ////////
-
-    function userDataGithub(githubNick) {
-      return $http.get('https://api.github.com/users/' + githubNick);
-    }
-
-    function reposDataGithub(githubNick) {
-      return $http.get('https://api.github.com/users/' + githubNick + '/repos');
-    }
-
-  }
-
-}());
-
 (function() {
   'use strict';
 
@@ -43030,9 +42975,9 @@ angular.module('ngResource', ['ng']).
     .module('app')
     .controller('SearchCtrl', SearchController);
 
-  SearchController.$inject = ['userdata'];
+  SearchController.$inject = ['userdata', 'reposdata'];
 
-  function SearchController(userdata) {
+  function SearchController(userdata, reposdata) {
     var vm = this;
     vm.user = null;
     vm.repos = null;
@@ -43064,31 +43009,6 @@ angular.module('ngResource', ['ng']).
 
   angular
     .module('app')
-    .factory('reposdata', reposdata);
-
-  reposdata.$inject = ['$http'];
-
-  function reposdata($http) {
-
-    return {
-      reposDataGithub : reposDataGithub
-    };
-
-    ////////
-
-    function reposDataGithub(githubNick) {
-      return $http.get('https://api.github.com/users/' + githubNick + '/repos');
-    }
-
-  }
-
-}());
-
-(function() {
-  'use strict';
-
-  angular
-    .module('app')
     .factory('userdata', userdata);
 
   userdata.$inject = ['$http'];
@@ -43096,13 +43016,18 @@ angular.module('ngResource', ['ng']).
   function userdata($http) {
 
     return {
-      userDataGithub : userDataGithub
+      userDataGithub : userDataGithub,
+      reposDataGithub : reposDataGithub
     };
 
     ////////
 
     function userDataGithub(githubNick) {
       return $http.get('https://api.github.com/users/' + githubNick);
+    }
+
+    function reposDataGithub(githubNick) {
+      return $http.get('https://api.github.com/users/' + githubNick + '/repos');
     }
 
   }

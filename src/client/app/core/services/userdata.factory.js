@@ -10,13 +10,18 @@
   function userdata($http) {
 
     return {
-      userDataGithub : userDataGithub
+      userDataGithub : userDataGithub,
+      reposDataGithub : reposDataGithub
     };
 
     ////////
 
     function userDataGithub(githubNick) {
       return $http.get('https://api.github.com/users/' + githubNick);
+    }
+
+    function reposDataGithub(githubNick) {
+      return $http.get('https://api.github.com/users/' + githubNick + '/repos');
     }
 
   }
