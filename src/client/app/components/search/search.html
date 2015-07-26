@@ -3,9 +3,9 @@
 
   <div class="container">
 		<div class="row">
-			<div class="span12">
+			<div class="col-md-4">
 
-      <h2>{{vm.title}}</h2>
+      <h2><span class="icon-search" aria-hidden="true"></span> {{vm.title}}</h2>
 
       <input type="text" ng-model="vm.userName" />
       <a ng-href="#/account/{{vm.userName}}" class="btn btn-primary btn-block">Buscar cuenta</a>
