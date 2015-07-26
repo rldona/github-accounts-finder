@@ -10,7 +10,6 @@
   function SearchController(githubApi) {
     var vm = this;
     vm.user = null;
-    vm.repos = null;
     vm.title = 'Busca una cuenta de Github';
 
     ////////
@@ -20,13 +19,6 @@
         vm.user = [];
         vm.user = data;
         return vm.user;
-      });
-    };
-
-    vm.findRepositories = function(name) {
-      return githubApi.reposDataGithub(name).then(function(data) {
-        vm.repos = data;
-        return vm.repos;
       });
     };
 
