@@ -5,18 +5,18 @@
     .module('app')
     .controller('SearchCtrl', SearchController);
 
-  SearchController.$inject = ['userdata'];
+  SearchController.$inject = ['githubApi'];
 
-  function SearchController(userdata) {
+  function SearchController(githubApi) {
     var vm = this;
     vm.user = null;
     vm.repos = null;
-    vm.title = 'Github accounts finder: ';
+    vm.title = 'Busca una cuenta de Github: ';
 
     ////////
 
     vm.findUser = function(name) {
-      return userdata.userDataGithub(name).then(function(data) {
+      return githubApi.userDataGithub(name).then(function(data) {
         vm.user = [];
         vm.user = data;
         return vm.user;
@@ -24,7 +24,7 @@
     };
 
     vm.findRepositories = function(name) {
-      return userdata.reposDataGithub(name).then(function(data) {
+      return githubApi.reposDataGithub(name).then(function(data) {
         vm.repos = data;
         return vm.repos;
       });

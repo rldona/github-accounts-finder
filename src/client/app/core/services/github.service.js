@@ -1,13 +1,15 @@
 (function() {
   'use strict';
 
+  console.log('githubApi');
+
   angular
-    .module('app')
-    .factory('userdata', userdata);
+    .module('core.services')
+    .factory('githubApi', githubApi);
 
-  userdata.$inject = ['$http'];
+  githubApi.$inject = ['$http'];
 
-  function userdata($http) {
+  function githubApi($http) {
 
     return {
       userDataGithub : userDataGithub,

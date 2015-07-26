@@ -1,0 +1,18 @@
+<!-- TODO: crear una directiva -->
+<section id="search" ng-controller="SearchCtrl as vm">
+
+  <div class="container">
+		<div class="row">
+			<div class="span12">
+
+      <h2>{{vm.title}}</h2>
+
+      <input type="text" ng-model="vm.userName" />
+      <a ng-href="#/account/{{vm.userName}}" class="btn btn-primary btn-block">Buscar cuenta</a>
+
+      </div>
+		</div>
+	</div>
+
+
+</section>

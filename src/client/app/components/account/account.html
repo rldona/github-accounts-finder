@@ -1,0 +1,35 @@
+<section id="repositories" ng-controller="AccountCtrl as vm">
+
+  <div class="container">
+		<div class="row">
+			<div class="span12">
+
+        <div ng-if="vm.user">
+
+          <img ng-src="{{vm.user.data.avatar_url}}" alt="{{vm.user.data.name}}" class="img-circle" />
+
+          <ul>
+            <li>Nombre: {{vm.user.data.name}}</li>
+            <li>Cuenta de Github: <a ng-href="{{vm.user.data.html_url}}">{{vm.user.data.login}}</a>  </li>
+            <li>Compañía: {{vm.user.data.company}}</li>
+            <li>Blog: <a ng-href="{{vm.user.data.blog}}">{{vm.user.data.blog}}</a></li>
+            <li>Localidad: {{vm.user.data.location}}</li>
+            <li>Email: <a ng-href="mailto:{{vm.user.data.email}}" target="_top">{{vm.user.data.email}}</a></li>
+            <li>Biografía: {{vm.user.data.bio}}</li>
+            <li>Repositorios públicos: <a ng-href="#/repositories/{{vm.user.data.login}}">{{vm.user.data.public_repos}}</a> </li>
+            <li>Gits públicos: {{vm.user.data.public_gists}}</li>
+            <li>Seguidores: {{vm.user.data.followers}}</li>
+            <li>Favoritos: {{vm.user.data.following}}</li>
+          </ul>
+
+          <br>
+
+          <a ng-href="#/repositories/{{vm.user.data.login}}" class="btn btn-primary btn-block">Ver todos los repsitorios</a>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>

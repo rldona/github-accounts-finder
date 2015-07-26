@@ -16,8 +16,7 @@ module.exports = function() {
             client + css + '**/*.css'
         ],
         js: [
-            clientApp + '**/*.js',
-            // '!' + clientApp + 'core'
+            clientApp + '**/*.js'
         ],
         bower: {
             json: require('./bower.json'),

@@ -1,0 +1,23 @@
+<section id="repositories" ng-controller="RepositoriesCtrl as vm">
+
+  <div class="container">
+		<div class="row">
+			<div class="span12">
+
+        <div ng-if="vm.repos">
+
+          <!-- TODO: ng-repeat repos -->
+          <ul>
+            <li ng-repeat="item in vm.repos.data">
+              <h2>{{item.name}}</h2>
+              <p>{{item.description}}</p>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
