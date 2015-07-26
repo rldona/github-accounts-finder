@@ -11,7 +11,7 @@
     var vm = this;
     vm.user = null;
     vm.repos = null;
-    vm.title = 'Busca una cuenta de Github: ';
+    vm.title = 'Busca una cuenta de Github';
 
     ////////
 
