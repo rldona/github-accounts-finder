@@ -10,8 +10,6 @@ var gulp = require('gulp'),
 // -----------------------------------------------
 
 gulp.task('sass', function() {
-  // log('Compile & compressed sass');
-
   return gulp
     .src('src/client/styles/scss/app.scss')
     .pipe($.sass().on('error', $.sass.logError))
